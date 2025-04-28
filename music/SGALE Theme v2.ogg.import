@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d02odglcb6kc"
+path="res://.godot/imported/SGALE Theme v2.ogg-670590280d6497ff798e6efe4620b816.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/SGALE Theme v2.ogg"
+dest_files=["res://.godot/imported/SGALE Theme v2.ogg-670590280d6497ff798e6efe4620b816.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=120.0
+beat_count=0
+bar_beats=4

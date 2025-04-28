@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0dx3t220tyu0"]
+
+[ext_resource type="Script" uid="uid://6dcs8b7jfykw" path="res://scripts/Autoloads/death_counter_autoload.gd" id="1_hwt4v"]
+
+[node name="DeathCounterAutoload" type="Node2D"]
+script = ExtResource("1_hwt4v")

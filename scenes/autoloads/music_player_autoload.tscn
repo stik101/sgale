@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://l0w0srqcxwet"]
+
+[ext_resource type="Script" uid="uid://dx8ue8jybcnmt" path="res://scripts/Autoloads/music_player_autoload.gd" id="1_6pg81"]
+[ext_resource type="AudioStream" uid="uid://bvmtnrafpr5kb" path="res://music/sgale theme v3.ogg" id="2_8xlvu"]
+
+[node name="MusicPlayerAutoload" type="AudioStreamPlayer"]
+volume_db = 5.0
+max_polyphony = 5
+bus = &"Music Player Autoload"
+playback_type = 1
+script = ExtResource("1_6pg81")
+theme_song = ExtResource("2_8xlvu")

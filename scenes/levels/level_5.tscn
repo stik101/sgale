@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=4 uid="uid://code5eqwpxyil"]
+
+[ext_resource type="PackedScene" uid="uid://b3i5loh324y1" path="res://scenes/prefabs/flag.tscn" id="1_4uvvo"]
+[ext_resource type="Texture2D" uid="uid://dngbbnfop7n5m" path="res://assets/tilemap/patternPack_tilesheet.png" id="2_f6ba3"]
+[ext_resource type="PackedScene" uid="uid://il36yihckcu1" path="res://scenes/prefabs/player.tscn" id="3_kkkq7"]
+[ext_resource type="Script" uid="uid://n27aiii202c5" path="res://scripts/camera_shake.gd" id="3_onp50"]
+[ext_resource type="PackedScene" uid="uid://bmr0dnyyni1f0" path="res://scenes/prefabs/grow_laser.tscn" id="5_7x0oe"]
+[ext_resource type="Shader" uid="uid://duxeo7tr38gh8" path="res://scenes/loop.gdshader" id="6_fsnos"]
+[ext_resource type="Texture2D" uid="uid://gsf4ivuw4ttr" path="res://assets/bg 2.png" id="7_mxx4w"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rbxbv"]
+texture = ExtResource("2_f6ba3")
+texture_region_size = Vector2i(128, 128)
+2:12/0 = 0
+2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:12/0 = 0
+3:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:13/0 = 0
+3:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:13/0 = 0
+2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_xgesl"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_rbxbv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvoq0"]
+shader = ExtResource("6_fsnos")
+shader_parameter/speed = 0.03
+
+[node name="Level5" type="Node2D"]
+position = Vector2(1, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 927.0
+offset_top = 1251.0
+offset_right = 1396.0
+offset_bottom = 1335.0
+bbcode_enabled = true
+text = "[center][font_size=30]This barrier makes you [wave][b]GROW![/b][/wave]
+Watch out to [b][shake]NOT[/shake][/b] be [i]too big[/i]"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color(0.158472, 0.158472, 0.158472, 1)
+offset_left = 1181.0
+offset_top = 170.0
+offset_right = 1650.0
+offset_bottom = 254.0
+bbcode_enabled = true
+text = "[center][font_size=30][b]PRO TIP:[/b] Try to jump after growing a little bit."
+fit_content = true
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 1563.0
+offset_top = 883.0
+offset_right = 1840.0
+offset_bottom = 1565.0
+scale = Vector2(1.19495, 1.19495)
+bbcode_enabled = true
+text = "[center][font_size=300]5[/font_size]"
+fit_content = true
+
+[node name="Flag" parent="." instance=ExtResource("1_4uvvo")]
+position = Vector2(2133, 182)
+rotation = -3.14159
+next_scene = "res://scenes/levels/level_6.tscn"
+
+[node name="Player" parent="." instance=ExtResource("3_kkkq7")]
+position = Vector2(559, 1400)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.53, 0.53)
+script = ExtResource("3_onp50")
+
+[node name="GrowLaser" parent="." instance=ExtResource("5_7x0oe")]
+position = Vector2(830, 1017)
+scale = Vector2(2.45058, 4.08643)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(1, 1.00326)
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAwAAAABAAAAAAACAAwAAAACAAAAAAACAAwAAAADAAAAAAACAAwAAAAEAAAAAAACAAwAAAAFAAAAAAACAAwAAAAGAAAAAAACAAwAAAAHAAAAAAACAAwAAAAIAAAAAAACAAwAAAAJAAAAAAACAAwAAAAKAAAAAAACAAwAAAALAAAAAAADAAwAAAAMAAAAAAACAAwAAAANAAAAAAACAAwAAAAOAAAAAAACAAwAAAAPAAAAAAACAAwAAAAQAAAAAAACAAwAAAACAAEAAAACAAwAAAACAAIAAAACAAwAAAACAAMAAAACAAwAAAACAAQAAAACAAwAAAACAAUAAAACAAwAAAACAAYAAAACAAwAAAACAAcAAAACAAwAAAACAAsAAAACAAwAAAADAAEAAAACAAwAAAADAAIAAAACAAwAAAADAAMAAAACAAwAAAADAAQAAAACAAwAAAADAAUAAAACAAwAAAADAAYAAAACAAwAAAADAAcAAAACAAwAAAADAAsAAAACAAwAAAAEAAEAAAACAAwAAAAEAAIAAAACAAwAAAAEAAMAAAACAAwAAAAEAAQAAAACAAwAAAAEAAUAAAACAAwAAAAEAAYAAAACAAwAAAAEAAcAAAACAAwAAAAEAAsAAAACAAwAAAAFAAEAAAACAAwAAAAFAAIAAAACAAwAAAAFAAMAAAACAAwAAAAFAAQAAAACAAwAAAAFAAUAAAACAAwAAAAFAAYAAAACAAwAAAAFAAcAAAACAAwAAAAFAAsAAAACAAwAAAAGAAEAAAACAAwAAAAGAAIAAAACAAwAAAAGAAMAAAACAAwAAAAGAAQAAAACAAwAAAAGAAUAAAACAAwAAAAGAAYAAAACAAwAAAAGAAcAAAACAAwAAAAGAAsAAAACAAwAAAAHAAsAAAACAAwAAAAIAAsAAAACAAwAAAAJAAsAAAACAAwAAAAKAAsAAAACAAwAAAALAAsAAAACAAwAAAAMAAsAAAACAAwAAAANAAsAAAACAAwAAAAOAAsAAAACAAwAAAAPAAsAAAACAAwAAAAQAAsAAAACAAwAAAACAAgAAAACAAwAAAACAAkAAAACAAwAAAACAAoAAAACAAwAAAAHAAEAAAACAAwAAAAHAAIAAAACAAwAAAAHAAMAAAACAAwAAAAHAAQAAAACAAwAAAAHAAUAAAACAAwAAAAHAAYAAAACAAwAAAAHAAcAAAACAAwAAAAIAAEAAAACAAwAAAAIAAIAAAACAAwAAAAIAAMAAAACAAwAAAAIAAQAAAACAAwAAAAIAAUAAAACAAwAAAAIAAYAAAACAAwAAAAIAAcAAAACAAwAAAARAAsAAAACAAwAAAASAAEAAAACAAwAAAASAAIAAAACAAwAAAASAAMAAAACAAwAAAASAAQAAAACAAwAAAASAAUAAAACAAwAAAASAAYAAAACAAwAAAASAAcAAAACAAwAAAASAAgAAAACAAwAAAASAAkAAAACAAwAAAASAAoAAAACAAwAAAASAAsAAAACAAwAAAAAAAEAAAACAAwAAAAAAAIAAAACAAwAAAAAAAMAAAACAAwAAAAAAAQAAAACAAwAAAAAAAUAAAACAAwAAAAAAAYAAAACAAwAAAAAAAcAAAACAAwAAAAAAAgAAAACAAwAAAAAAAkAAAACAAwAAAAAAAoAAAACAAwAAAAAAAsAAAACAAwAAAABAAEAAAACAAwAAAABAAIAAAACAAwAAAABAAMAAAACAAwAAAABAAQAAAACAAwAAAABAAUAAAACAAwAAAABAAYAAAACAAwAAAABAAcAAAACAAwAAAABAAgAAAACAAwAAAABAAkAAAACAAwAAAABAAoAAAACAAwAAAABAAsAAAACAAwAAAARAAAAAAACAAwAAAASAAAAAAACAAwAAAATAAAAAAACAAwAAAATAAEAAAACAAwAAAATAAIAAAACAAwAAAATAAMAAAACAAwAAAATAAQAAAACAAwAAAATAAUAAAACAAwAAAATAAYAAAACAAwAAAATAAcAAAACAAwAAAATAAgAAAACAAwAAAATAAkAAAACAAwAAAATAAoAAAACAAwAAAATAAsAAAACAAwAAAAUAAAAAAACAAwAAAAUAAEAAAACAAwAAAAUAAIAAAACAAwAAAAUAAMAAAACAAwAAAAUAAQAAAACAAwAAAAUAAUAAAACAAwAAAAUAAYAAAACAAwAAAAUAAcAAAACAAwAAAAUAAgAAAACAAwAAAAUAAkAAAACAAwAAAAUAAoAAAACAAwAAAAUAAsAAAACAAwAAAAVAAAAAAACAAwAAAAVAAEAAAACAAwAAAAVAAIAAAACAAwAAAAVAAMAAAACAAwAAAAVAAQAAAACAAwAAAAVAAUAAAACAAwAAAAVAAYAAAACAAwAAAAVAAcAAAACAAwAAAAVAAgAAAACAAwAAAAVAAkAAAACAAwAAAAVAAoAAAACAAwAAAAVAAsAAAACAAwAAAA=")
+tile_set = SubResource("TileSet_xgesl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="BGPattern" type="TextureRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vvoq0")
+offset_left = -5.0
+offset_top = -539.0
+offset_right = 621.0
+offset_bottom = 87.0
+scale = Vector2(2.39315, 2.39315)
+texture = ExtResource("7_mxx4w")
+
+[connection signal="player_touched_flag" from="Flag" to="Player" method="_player_touched_flag"]
+[connection signal="player_died" from="Player" to="Camera2D" method="apply_shake"]
+[connection signal="player_grow" from="GrowLaser" to="Player" method="_player_grow"]

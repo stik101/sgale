@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://col0rtrka7ef"]
+
+[ext_resource type="Script" uid="uid://cjfh4ldbvxkvk" path="res://scripts/Autoloads/speedrun_timer.gd" id="1_rqq84"]
+
+[node name="SpeedrunTimer" type="Control" node_paths=PackedStringArray("label", "panel")]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqq84")
+label = NodePath("CanvasLayer/Panel/Label")
+panel = NodePath("CanvasLayer/Panel")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -276.0
+offset_bottom = 76.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "00 : 00 : 00"

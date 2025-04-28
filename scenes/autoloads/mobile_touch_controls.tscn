@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq3y86whxf2ww"]
+
+[ext_resource type="Script" uid="uid://dvtqmwsxagn1q" path="res://scripts/Autoloads/mobile_touch_controls.gd" id="1_e0b6v"]
+[ext_resource type="Texture2D" uid="uid://dhl8f25gdxaut" path="res://assets/mobile controls/up normal.png" id="2_4fwj2"]
+[ext_resource type="Texture2D" uid="uid://6wevnwu675vb" path="res://assets/mobile controls/jump pressed.png" id="3_01fvw"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_texsr"]
+
+[node name="MobileTouchControls" type="CanvasLayer"]
+script = ExtResource("1_e0b6v")
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(1204, 620)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("2_4fwj2")
+texture_pressed = ExtResource("3_01fvw")
+action = "jump"
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("4_texsr")]
+offset_left = 62.0
+offset_top = -305.0
+offset_right = 362.0
+offset_bottom = -5.0
+action_left = "left"
+action_right = "right"

@@ -1,0 +1,155 @@
+[gd_scene load_steps=15 format=4 uid="uid://c7tp8ea4m42gw"]
+
+[ext_resource type="PackedScene" uid="uid://b3i5loh324y1" path="res://scenes/prefabs/flag.tscn" id="1_a88xo"]
+[ext_resource type="Texture2D" uid="uid://bqmdjverfneo7" path="res://assets/keys/skull art.png" id="1_x7ylu"]
+[ext_resource type="Texture2D" uid="uid://dngbbnfop7n5m" path="res://assets/tilemap/patternPack_tilesheet.png" id="2_knlw6"]
+[ext_resource type="PackedScene" uid="uid://il36yihckcu1" path="res://scenes/prefabs/player.tscn" id="3_aud3c"]
+[ext_resource type="PackedScene" uid="uid://do7r5auy5ca7u" path="res://scenes/prefabs/end_bound.tscn" id="4_vt6vp"]
+[ext_resource type="Script" uid="uid://n27aiii202c5" path="res://scripts/camera_shake.gd" id="5_ohes8"]
+[ext_resource type="Shader" uid="uid://duxeo7tr38gh8" path="res://scenes/loop.gdshader" id="7_ugcn1"]
+[ext_resource type="Texture2D" uid="uid://gsf4ivuw4ttr" path="res://assets/bg 2.png" id="8_pimnq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rbxbv"]
+texture = ExtResource("2_knlw6")
+texture_region_size = Vector2i(128, 128)
+2:12/0 = 0
+2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:12/0 = 0
+3:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:13/0 = 0
+3:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:13/0 = 0
+2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_xgesl"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_rbxbv")
+
+[sub_resource type="Animation" id="Animation_akrlr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skulls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fnky6"]
+resource_name = "default"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skulls:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 1.5, 3),
+"transitions": PackedFloat32Array(0.482968, 0.353553, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5oh4"]
+_data = {
+&"RESET": SubResource("Animation_akrlr"),
+&"default": SubResource("Animation_fnky6")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bnyt"]
+shader = ExtResource("7_ugcn1")
+shader_parameter/speed = 0.03
+
+[node name="Level3" type="Node2D"]
+position = Vector2(1, 0)
+
+[node name="Skulls" type="Node2D" parent="."]
+
+[node name="SkullArt" type="Sprite2D" parent="Skulls"]
+self_modulate = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+position = Vector2(1288, 1185)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_x7ylu")
+
+[node name="SkullArt2" type="Sprite2D" parent="Skulls"]
+self_modulate = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+position = Vector2(1165, 1185)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_x7ylu")
+
+[node name="SkullArt3" type="Sprite2D" parent="Skulls"]
+self_modulate = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+position = Vector2(1417, 1185)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_x7ylu")
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 1089.0
+offset_top = 225.0
+offset_right = 1366.0
+offset_bottom = 634.0
+scale = Vector2(1.19495, 1.19495)
+bbcode_enabled = true
+text = "[center][font_size=300]3[/font_size]"
+fit_content = true
+
+[node name="Flag" parent="." instance=ExtResource("1_a88xo")]
+position = Vector2(2085, 461)
+next_scene = "res://scenes/levels/level_4.tscn"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAQAAAACAAwAAAAAAAAAAAACAAwAAAAAAAEAAAACAAwAAAAAAAIAAAACAAwAAAAAAAMAAAACAAwAAAABAAAAAAACAAwAAAACAAAAAAACAAwAAAADAAAAAAACAAwAAAAEAAAAAAACAAwAAAAFAAAAAAACAAwAAAAGAAAAAAACAAwAAAAHAAAAAAACAAwAAAAIAAAAAAACAAwAAAAJAAAAAAACAAwAAAAKAAAAAAACAAwAAAALAAAAAAACAAwAAAAMAAAAAAACAAwAAAANAAAAAAACAAwAAAAOAAAAAAACAAwAAAAPAAAAAAACAAwAAAAQAAAAAAACAAwAAAARAAAAAAACAAwAAAARAAEAAAACAAwAAAARAAIAAAACAAwAAAAAAAYAAAACAAwAAAAHAAgAAAACAAwAAAAMAAgAAAACAAwAAAAMAAcAAAACAAwAAAAMAAYAAAACAAwAAAAMAAUAAAACAAwAAAAMAAQAAAACAAwAAAANAAQAAAACAAwAAAAOAAQAAAACAAwAAAAPAAQAAAACAAwAAAAQAAQAAAACAAwAAAARAAQAAAACAAwAAAARAAMAAAACAAwAAAAAAAUAAAACAAwAAAAAAAcAAAACAAwAAAAAAAgAAAACAAwAAAABAAgAAAACAAwAAAABAAkAAAACAAwAAAAAAAkAAAACAAwAAAACAAkAAAACAAwAAAADAAkAAAACAAwAAAAEAAkAAAACAAwAAAAFAAkAAAACAAwAAAAGAAkAAAACAAwAAAAHAAkAAAACAAwAAAAMAAkAAAACAAwAAAANAAkAAAACAAwAAAAOAAkAAAACAAwAAAAPAAkAAAACAAwAAAAQAAkAAAACAAwAAAARAAkAAAACAAwAAAARAAgAAAACAAwAAAARAAcAAAACAAwAAAARAAYAAAACAAwAAAARAAUAAAACAAwAAAACAAgAAAACAAwAAAADAAgAAAACAAwAAAAEAAgAAAACAAwAAAAFAAgAAAACAAwAAAAGAAgAAAACAAwAAAANAAUAAAACAAwAAAANAAYAAAACAAwAAAANAAcAAAACAAwAAAANAAgAAAACAAwAAAAOAAUAAAACAAwAAAAOAAYAAAACAAwAAAAOAAcAAAACAAwAAAAOAAgAAAACAAwAAAAPAAUAAAACAAwAAAAPAAYAAAACAAwAAAAPAAcAAAACAAwAAAAPAAgAAAACAAwAAAAQAAUAAAACAAwAAAAQAAYAAAACAAwAAAAQAAcAAAACAAwAAAAQAAgAAAACAAwAAAAAAAoAAAACAAwAAAAAAAsAAAACAAwAAAAAAAwAAAACAAwAAAAAAA0AAAACAAwAAAABAAoAAAACAAwAAAABAAsAAAACAAwAAAABAAwAAAACAAwAAAABAA0AAAACAAwAAAACAAoAAAACAAwAAAACAAsAAAACAAwAAAACAAwAAAACAAwAAAACAA0AAAACAAwAAAADAAoAAAACAAwAAAADAAsAAAACAAwAAAADAAwAAAACAAwAAAADAA0AAAACAAwAAAAEAAoAAAACAAwAAAAEAAsAAAACAAwAAAAEAAwAAAACAAwAAAAEAA0AAAACAAwAAAAFAAoAAAACAAwAAAAFAAsAAAACAAwAAAAFAAwAAAACAAwAAAAFAA0AAAACAAwAAAAGAAoAAAACAAwAAAAGAAsAAAACAAwAAAAGAAwAAAACAAwAAAAGAA0AAAACAAwAAAAHAAoAAAACAAwAAAAHAAsAAAACAAwAAAAHAAwAAAACAAwAAAAHAA0AAAACAAwAAAAMAAoAAAACAAwAAAAMAAsAAAACAAwAAAAMAAwAAAACAAwAAAAMAA0AAAACAAwAAAANAAoAAAACAAwAAAANAAsAAAACAAwAAAANAAwAAAACAAwAAAANAA0AAAACAAwAAAAOAAoAAAACAAwAAAAOAAsAAAACAAwAAAAOAAwAAAACAAwAAAAOAA0AAAACAAwAAAAPAAoAAAACAAwAAAAPAAsAAAACAAwAAAAPAAwAAAACAAwAAAAPAA0AAAACAAwAAAAQAAoAAAACAAwAAAAQAAsAAAACAAwAAAAQAAwAAAACAAwAAAAQAA0AAAACAAwAAAARAAoAAAACAAwAAAARAAsAAAACAAwAAAARAAwAAAACAAwAAAARAA0AAAACAAwAAAA=")
+tile_set = SubResource("TileSet_xgesl")
+
+[node name="Player" parent="." instance=ExtResource("3_aud3c")]
+position = Vector2(259, 1007)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.645, 0.645)
+script = ExtResource("5_ohes8")
+
+[node name="EndBound" parent="." instance=ExtResource("4_vt6vp")]
+position = Vector2(1267, 2036)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v5oh4")
+}
+autoplay = "default"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color(0.197937, 0.197937, 0.197937, 1)
+clip_contents = false
+offset_left = 193.0
+offset_top = 652.0
+offset_right = 811.0
+offset_bottom = 981.0
+bbcode_enabled = true
+text = "[center][font_size=50][wave][b]PRO TIP:[/b] Hold Jump longer for longer jump!"
+fit_content = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="BGPattern" type="TextureRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_2bnyt")
+offset_left = -5.0
+offset_top = -539.0
+offset_right = 621.0
+offset_bottom = 87.0
+scale = Vector2(2.39315, 2.39315)
+texture = ExtResource("8_pimnq")
+
+[connection signal="player_touched_flag" from="Flag" to="Player" method="_player_touched_flag"]
+[connection signal="player_died" from="Player" to="Camera2D" method="apply_shake"]
+[connection signal="player_touched_endbound" from="EndBound" to="Player" method="_player_die"]

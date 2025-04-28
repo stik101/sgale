@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://uukia7gtka7p"]
+
+[ext_resource type="Script" uid="uid://cyh7jc7s0ho25" path="res://scripts/credits.gd" id="1_27hdy"]
+[ext_resource type="Shader" uid="uid://duxeo7tr38gh8" path="res://scenes/loop.gdshader" id="2_0ctdu"]
+[ext_resource type="Texture2D" uid="uid://gsf4ivuw4ttr" path="res://assets/bg 2.png" id="3_0ctdu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fbfq"]
+shader = ExtResource("2_0ctdu")
+shader_parameter/speed = 0.03
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27hdy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SGALE" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+bbcode_enabled = true
+text = "[center][b][font_size=80]SGALE"
+fit_content = true
+
+[node name="Acronym" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+bbcode_enabled = true
+text = "[center][font_size=40][b]A[/b]  [b]S[/b]mall [b]G[/b]ame [b]A[/b]bout [b]L[/b]ength [b]E[/b]xpansion"
+fit_content = true
+
+[node name="Game by me" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+bbcode_enabled = true
+text = "
+[center][font_size=50]A Game by [b]StiK"
+fit_content = true
+
+[node name="Game by me2" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+bbcode_enabled = true
+text = "
+
+
+[center][font_size=50][wave]Thx for playing!!!"
+fit_content = true
+
+[node name="DeathCounter" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+theme_override_constants/outline_size = 15
+bbcode_enabled = true
+text = "										[font_size=30][color=red]Total death: "
+fit_content = true
+
+[node name="SpeedrunTime" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+theme_override_constants/outline_size = 15
+bbcode_enabled = true
+text = "										[font_size=30][color=green]FINAL TIME: "
+fit_content = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -31.0
+offset_right = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+icon_alignment = 1
+expand_icon = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="BGPattern" type="TextureRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_2fbfq")
+offset_left = -5.0
+offset_top = -539.0
+offset_right = 621.0
+offset_bottom = 87.0
+scale = Vector2(2.39315, 2.39315)
+texture = ExtResource("3_0ctdu")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
